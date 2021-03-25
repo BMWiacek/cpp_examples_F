@@ -55,7 +55,7 @@ jobs:
         testConfig: 'builtin://recommended Rules'
         input: FlowAnalysisCpp/cpptest.bdf
         reportDir: reportsCLI_pro
-        additionalParams: '-localsettings config.properties'
+        additionalParams: '-localsettings ../config.properties'
         commandLinePattern: '${cpptestcli} -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams}'
 
     # Upload analysis results in SARIF format, so they are available as GitHub code scanning alerts.
