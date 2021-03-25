@@ -38,6 +38,8 @@ jobs:
       with:
         input: FlowAnalysisCpp/cpptest.bdf
         compilerConfig: 'gcc_7-64'
+        reportFormat: xml,html,sarif
+        reportDir: reportsCLI
       # Uncomment for C/C++test 2020.2 to generate SARIF report:
       # with:
       #   reportFormat: xml,html,custom
@@ -47,11 +49,11 @@ jobs:
     - name: Upload results (SARIF)
       uses: github/codeql-action/upload-sarif@v1
       with:
-        sarif_file: reports/report.sarif
+        sarif_file: reportsCLI/report.sarif
     
     # Upload archive with all report files (.xml, .html, .sarif).
     - name: Archive reports
       uses: actions/upload-artifact@v2
       with:
         name: Static analysis reports
-        path: reports/*.*
+        path: reportsCLI/*.*
