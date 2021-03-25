@@ -52,7 +52,7 @@ jobs:
       # C/C++test workspace will be created in '../workspace'.
       # C/C++test will create a new project based on the provided .bdf file.
       with:
-        testConfig: 'builtin://recommended Rules'
+        testConfig: 'builtin://Recommended Rules'
         input: FlowAnalysisCpp/cpptest.bdf
         reportDir: reportsCLI_pro
         additionalParams: '-localsettings ../config.properties'
