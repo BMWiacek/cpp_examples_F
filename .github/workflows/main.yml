@@ -38,7 +38,8 @@ jobs:
       with:
         input: FlowAnalysisCpp/cpptest.bdf
         compilerConfig: 'gcc_7-64'
-        reportFormat: xml,html,sarif
+        reportFormat: xml,custom
+        additionalParams: '-property report.custom.extension=sarif -property report.custom.xsl.file=${PARASOFT_SARIF_XSL}'
         reportDir: reportsCLI
       # Uncomment for C/C++test 2020.2 to generate SARIF report:
       # with:
