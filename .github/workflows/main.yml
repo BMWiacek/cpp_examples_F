@@ -28,8 +28,8 @@ jobs:
     
     # Build your Make project - using 'cpptesttrace' to collect input data for the code analysis.
     # Be sure 'cpptesttrace' is available on $PATH.
-    #- name: Build project
-    #  run: cpptesttrace make clean all
+    - name: Build project
+      run: cpptesttrace make clean all
 
     # Run code analysis with C/C++test Standard.
     - name: Run C/C++test
@@ -37,7 +37,6 @@ jobs:
       uses: parasoft/run-cpptest-action@1.0.0
       with:
         installDir: /home/bmw/parasoft_cpptest_standard-2021.1.0.20210412B3133
-        input: FlowAnalysisCpp/cpptest.bdf
         compilerConfig: 'gcc_9-64'
         reportFormat: xml,custom
         additionalParams: '-property report.custom.extension=sarif -property report.custom.xsl.file=${PARASOFT_SARIF_XSL}'
