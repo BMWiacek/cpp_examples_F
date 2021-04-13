@@ -32,31 +32,31 @@ jobs:
     #  run: cpptesttrace make clean all
 
     # Run code analysis with C/C++test Standard.
-    #- name: Run C/C++test
+    - name: Run C/C++test
       # Use dedicated 'run-cpptest-action' GitHub Action.
-    #  uses: parasoft/run-cpptest-action@0.2.3-alpha
-    #  with:
-    #    input: FlowAnalysisCpp/cpptest.bdf
-    #    compilerConfig: 'gcc_7-64'
-    #    reportFormat: xml,custom
-    #    additionalParams: '-property report.custom.extension=sarif -property report.custom.xsl.file=${PARASOFT_SARIF_XSL}'
-    #    reportDir: reportsCLI
+      uses: parasoft/run-cpptest-action@1.0.0
+      with:
+        input: FlowAnalysisCpp/cpptest.bdf
+        compilerConfig: 'gcc_7-64'
+        reportFormat: xml,custom
+        additionalParams: '-property report.custom.extension=sarif -property report.custom.xsl.file=${PARASOFT_SARIF_XSL}'
+        reportDir: reportsCLI
       # Uncomment for C/C++test 2020.2 to generate SARIF report:
       # with:
       #   reportFormat: xml,html,custom
       #   additionalParams: '-property report.custom.extension=sarif -property report.custom.xsl.file=${PARASOFT_SARIF_XSL}'
       
     # Run code analysis with C/C++test Professional.
-    - name: Run C/C++test 
-      uses: parasoft/run-cpptest-action@0.2.3-alpha
-      # C/C++test workspace will be created in '../workspace'.
+    #- name: Run C/C++test 
+    #  uses: parasoft/run-cpptest-action@0.2.3-alpha
+    #  # C/C++test workspace will be created in '../workspace'.
       # C/C++test will create a new project based on the provided .bdf file.
-      with:
-        testConfig: 'builtin://Recommended Rules'
-        input: FlowAnalysisCpp/cpptest.bdf
-        reportDir: reportsCLI_pro
-        additionalParams: '-localsettings ../config.properties'
-        commandLinePattern: '${cpptestcli} -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams}'
+    #  with:
+    #    testConfig: 'builtin://Recommended Rules'
+    #    input: FlowAnalysisCpp/cpptest.bdf
+    #    reportDir: reportsCLI_pro
+    #    additionalParams: '-localsettings ../config.properties'
+    #    commandLinePattern: '${cpptestcli} -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams}'
 
     # Upload analysis results in SARIF format, so they are available as GitHub code scanning alerts.
     - name: Upload results (SARIF)
